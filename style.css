@@ -1,0 +1,13 @@
+
+button {
+    
+    border: none;
+    border-radius: 8px;
+    color: #ffff;
+    background-color: dodgerblue;
+    width: 200px;
+    height: 40px;
+    padding: 5px;
+    font-size: large;
+    margin: 10px;
+}

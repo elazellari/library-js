@@ -33,3 +33,12 @@ function displayBook(library) {
     tr.appendChild(td);
   });
 }
+
+//Display form button
+const addBook = document.querySelector(".add-book");
+const bookForm = document.querySelector(".book-form");
+
+addBook.addEventListener("click", () => {
+  bookForm.style.display = "block";
+  addBook.style.display = "none";
+});
