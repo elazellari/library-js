@@ -30,6 +30,7 @@ addBook.addEventListener("click", (event) => {
 //add new book to library
 const title = document.querySelector("#title");
 const author = document.querySelector("#author");
+const read = document.querySelector("read");
 const submit = document.querySelector(".submit");
 submit.addEventListener("click", (event) => {
   event.preventDefault();
@@ -43,10 +44,33 @@ submit.addEventListener("click", (event) => {
 function displayBook(library) {
   table.innerHTML = ``;
   library.forEach((book) => {
-    const tr = document.createElement("tr");
-    table.appendChild(tr);
-    const td = document.createElement("td");
-    td.innerText = `Id: ${book.id}  Title: ${book.title}  Author: ${book.author}`;
-    tr.appendChild(td);
+    addBookToTable(book);
+  });
+}
+
+//add book to display function
+
+function addBookToTable(myBook) {
+  const tr = document.createElement("tr");
+  table.appendChild(tr);
+  const td = document.createElement("td");
+  const input = document.createElement("input");
+  const label = document.createElement("label");
+  label.innerText = "Read: ";
+  input.type = "checkbox";
+  //button to delete book
+  const deleteButton = document.createElement("button");
+  deleteButton.innerText = "Delete book";
+  td.innerText = `Id: ${myBook.id}  Title: ${myBook.title}  Author: ${myBook.author}`;
+  tr.appendChild(td);
+  tr.appendChild(label);
+  tr.appendChild(input);
+  tr.appendChild(deleteButton);
+  deleteButton.addEventListener("click", () => {
+    let index = myLibrary.indexOf(myBook);
+    if (index > -1) {
+      myLibrary.splice(index, 1);
+      tr.innerText = "";
+    }
   });
 }
